@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"os"
+	"math/rand"
 	"strings"
 )
 
@@ -32,14 +31,9 @@ func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
 
-func newDeckFromFile(filename string) deck {
-	bs, err := ioutil.ReadFile(filename)
-	if err != nil {
-		// Option 1 - log the error and return a call a newDeck()
-		// Option 2 - log the error and entirely quit the program
-		fmt.Println("Error: ", err)
-		os.Exit(1)
+func (d deck) shuffle() {
+	for i := range d {
+		newPosition := rand.Intn(len(d) - 1)
+		d[i], d[newPosition] = d[newPosition], d[i]
 	}
-
-	return strings.Split(string(bs), ",")
 }
