@@ -1,0 +1,4 @@
+.pre-commit-config.yaml
+.code_quality/*
+go.mod
+.DS_Store
