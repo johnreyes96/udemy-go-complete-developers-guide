@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"strings"
 	"testing"
 )
 
@@ -19,11 +20,30 @@ func TestNewDeck(t *testing.T) {
 	}
 }
 
+func TestToString(t *testing.T) {
+	d := newDeck()
+	deckJoinWithCommas := d.toString()
+	deckSplit := strings.Split(deckJoinWithCommas, ",")
+
+	if deckSplit[0] != "Ace of Spades" {
+		t.Errorf("Expected first card of Ace of Spades, but got %v", deckSplit[0])
+	}
+	if deckSplit[len(deckSplit)-1] != "Four of Clubs" {
+		t.Errorf("Expected last card of Four of Clubs, but got %v", deckSplit[len(deckSplit)-1])
+	}
+}
+
 func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
-	os.Remove("_decktesting")
+	err := os.Remove("_decktesting")
+	if err != nil {
+		return
+	}
 
 	deck := newDeck()
-	deck.saveToFile("_decktesting")
+	err = deck.saveToFile("_decktesting")
+	if err != nil {
+		return
+	}
 
 	loadedDeck := newDeckFromFile("_decktesting")
 
@@ -31,5 +51,17 @@ func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
 		t.Errorf("Expected 16 cards in deck, but got %v", len(loadedDeck))
 	}
 
-	os.Remove("_decktesting")
+	err = os.Remove("_decktesting")
+	if err != nil {
+		return
+	}
+}
+
+func TestShuffle(t *testing.T) {
+	d := newDeck()
+	d.shuffle()
+
+	if len(d) != 16 {
+		t.Errorf("Expected 16 cards in deck, but got %v", len(d))
+	}
 }

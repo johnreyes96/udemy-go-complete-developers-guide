@@ -8,11 +8,11 @@ import (
 
 func main() {
 	links := []string{
-		"http://google.com.co",
-		"http://facebook.com",
-		"http://stackoverflow.com",
-		"http://golang.org",
-		"http://amazon.com",
+		"https://google.com.co",
+		"https://facebook.com",
+		"https://stackoverflow.com",
+		"https://golang.org",
+		"https://amazon.com",
 	}
 
 	c := make(chan string)

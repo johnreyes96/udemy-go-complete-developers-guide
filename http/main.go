@@ -10,14 +10,23 @@ import (
 type logWriter struct{}
 
 func main() {
-	resp, err := http.Get("http://www.google.com")
+	resp := executeUrl("https://www.google.com")
+	lw := logWriter{}
+	_, err := io.Copy(lw, resp.Body)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+}
+
+func executeUrl(url string) *http.Response {
+	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Println("Error: ", err)
 		os.Exit(1)
 	}
-
-	lw := logWriter{}
-	io.Copy(lw, resp.Body)
+	return resp
 }
 
 func (logWriter) Write(bs []byte) (int, error) {
