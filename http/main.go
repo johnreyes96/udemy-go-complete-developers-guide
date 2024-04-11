@@ -12,9 +12,8 @@ type logWriter struct{}
 func main() {
 	resp := executeUrl("https://www.google.com")
 	lw := logWriter{}
-	_, err := io.Copy(lw, resp.Body)
 
-	if err != nil {
+	if _, err := io.Copy(lw, resp.Body); err != nil {
 		fmt.Println("Error:", err)
 		return
 	}

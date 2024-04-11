@@ -1,3 +1,3 @@
-module puppy
+module http
 
 go 1.18

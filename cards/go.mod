@@ -1,3 +1,3 @@
-module puppy
+module cards
 
 go 1.18
