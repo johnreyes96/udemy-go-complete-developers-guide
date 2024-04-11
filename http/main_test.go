@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestExecuteUrl(t *testing.T) {
+func TestGivenUrlWhenExecuteUrlThenMustReturnOK(t *testing.T) {
 	resp := executeUrl("https://www.google.com")
 
 	if resp == nil {
@@ -19,7 +19,7 @@ func TestExecuteUrl(t *testing.T) {
 	}
 }
 
-func TestWrite(t *testing.T) {
+func TestGivenLogWriteWhenWrite6BytesThenMustReturn6Items(t *testing.T) {
 	bs := []byte{100, 50, 40, 30, 55, 16}
 	lw := logWriter{}
 

@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestNewDeck(t *testing.T) {
+func TestGivenACardsWhenInvokeNewDeckThenMustReturn16Cards(t *testing.T) {
 	d := newDeck()
 
 	if len(d) != 16 {
@@ -20,11 +20,11 @@ func TestNewDeck(t *testing.T) {
 	}
 }
 
-func TestToString(t *testing.T) {
+func TestGivenNewDeckWhenDeckToStringThenMustReturnCardsInString(t *testing.T) {
 	d := newDeck()
+
 	deckJoinWithCommas := d.toString()
 	deckSplit := strings.Split(deckJoinWithCommas, ",")
-
 	if deckSplit[0] != "Ace of Spades" {
 		t.Errorf("Expected first card of Ace of Spades, but got %v", deckSplit[0])
 	}
@@ -33,14 +33,12 @@ func TestToString(t *testing.T) {
 	}
 }
 
-func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
-	err := os.Remove("_decktesting")
-	if err != nil {
-		return
-	}
-
+func TestGivenSaveToDeckWhenNewDeckFromFileThenMustReturnLoadedDeck(t *testing.T) {
+	_ = os.Remove("_decktesting")
 	deck := newDeck()
-	err = deck.saveToFile("_decktesting")
+
+	err := deck.saveToFile("_decktesting")
+
 	if err != nil {
 		return
 	}
@@ -51,17 +49,28 @@ func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
 		t.Errorf("Expected 16 cards in deck, but got %v", len(loadedDeck))
 	}
 
-	err = os.Remove("_decktesting")
-	if err != nil {
-		return
-	}
+	_ = os.Remove("_decktesting")
 }
 
-func TestShuffle(t *testing.T) {
+func TestGivenNewDeckWhenShuffleCardsThenMustReturnCardsShuffled(t *testing.T) {
 	d := newDeck()
+
 	d.shuffle()
 
 	if len(d) != 16 {
 		t.Errorf("Expected 16 cards in deck, but got %v", len(d))
+	}
+}
+
+func TestGivenNewDeckWhenDealCardsThenMustReturn2DecksDealed(t *testing.T) {
+	d := newDeck()
+
+	d1, d2 := deal(d, 5)
+
+	if len(d1) != 5 {
+		t.Errorf("Expected 5 cards in deck, but got %v", len(d1))
+	}
+	if len(d2) != 11 {
+		t.Errorf("Expected 11 cards in deck, but got %v", len(d2))
 	}
 }

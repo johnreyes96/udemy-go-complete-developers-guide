@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestNewDeck(t *testing.T) {
+func TestGivenCheckLinkWhenLinkIsUpThenMustReturnLink(t *testing.T) {
 	link := "https://google.com.co"
 	c := make(chan string)
 
