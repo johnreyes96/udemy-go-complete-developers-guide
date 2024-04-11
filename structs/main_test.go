@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestUpdateName(t *testing.T) {
+func TestGivenAPersonWhenUpdateNameThenMustUpdateFirstName(t *testing.T) {
 	john := person{
 		firstName: "John",
 		lastName:  "Reyes",

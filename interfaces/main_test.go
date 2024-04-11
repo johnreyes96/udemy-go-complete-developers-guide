@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestGetGreetingSpanish(t *testing.T) {
+func TestGivenGetGreetingWhenInterfacesIsSpanishBotThenMustReturnGreetingInSpanish(t *testing.T) {
 	sb := spanishBot{}
 
 	greeting := sb.getGreeting()
@@ -12,7 +12,7 @@ func TestGetGreetingSpanish(t *testing.T) {
 	}
 }
 
-func TestGetGreetingEnglish(t *testing.T) {
+func TestGivenGetGreetingWhenInterfacesIsEnglishBotThenMustReturnGreetingInEnglish(t *testing.T) {
 	sb := englishBot{}
 
 	greeting := sb.getGreeting()
