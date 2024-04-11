@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/github/license/johnreyes96/udemy-go-complete-developers-guide?style=plastic)
 ![Last Commit](https://img.shields.io/github/last-commit/johnreyes96/udemy-go-complete-developers-guide?style=plastic)
 
-This repository is about udemy curse Go: The Complete Developer's Guide (Golang).
+This repository is about udemy course [Go: The Complete Developer's Guide (Golang)](https://www.udemy.com/course/go-the-complete-developers-guide/).
 
 ## Tecnologies and tools
 * GO 1.18.9 [download here](https://go.dev/dl/)
