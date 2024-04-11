@@ -5,6 +5,7 @@ import "fmt"
 type shape interface {
 	getArea() float64
 }
+
 type triangle struct {
 	base   float64
 	height float64

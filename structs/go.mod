@@ -1,3 +1,3 @@
-module puppy
+module structs
 
 go 1.18

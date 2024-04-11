@@ -1,3 +1,3 @@
-module puppy
+module interfaces
 
 go 1.18

@@ -7,7 +7,6 @@ type bot interface {
 }
 
 type englishBot struct{}
-
 type spanishBot struct{}
 
 func main() {
